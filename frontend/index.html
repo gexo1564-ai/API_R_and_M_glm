@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Explora todos los personajes del universo de Rick and Morty. Busca, filtra y navega por páginas." />
+  <title>Rick and Morty · Explorer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <div class="header__inner">
+      <h1 class="header__title">
+        <span class="header__portal">🌀</span>
+        Rick <span class="header__accent">&</span> Morty
+        <span class="header__subtitle">Explorer</span>
+      </h1>
+      <div class="search-box" id="search-box">
+        <svg class="search-box__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+        <input
+          id="search-input"
+          class="search-box__input"
+          type="text"
+          placeholder="Buscar personaje…"
+          autocomplete="off"
+        />
+        <span class="search-box__spinner" id="search-spinner"></span>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- LOADING STATE -->
+    <div class="state state--loading" id="state-loading">
+      <div class="loader">
+        <div class="loader__portal"></div>
+        <p class="loader__text">Abriendo portal…</p>
+      </div>
+    </div>
+
+    <!-- ERROR STATE -->
+    <div class="state state--error hidden" id="state-error">
+      <div class="error-card">
+        <span class="error-card__icon">⚠️</span>
+        <p class="error-card__message" id="error-message">Ocurrió un error inesperado.</p>
+        <button class="btn btn--retry" id="btn-retry">Reintentar</button>
+      </div>
+    </div>
+
+    <!-- EMPTY STATE -->
+    <div class="state state--empty hidden" id="state-empty">
+      <div class="empty-card">
+        <span class="empty-card__icon">🔍</span>
+        <p class="empty-card__message">No se encontraron personajes para tu búsqueda.</p>
+      </div>
+    </div>
+
+    <!-- CHARACTER GRID -->
+    <section class="grid" id="character-grid"></section>
+
+    <!-- PAGINATION -->
+    <nav class="pagination hidden" id="pagination">
+      <button class="btn btn--page" id="btn-prev" aria-label="Página anterior">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+        <span>Anterior</span>
+      </button>
+      <span class="pagination__info" id="page-info">1 / 1</span>
+      <button class="btn btn--page" id="btn-next" aria-label="Página siguiente">
+        <span>Siguiente</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </nav>
+  </main>
+
+  <footer class="footer">
+    <p>Datos de <a href="https://rickandmortyapi.com/" target="_blank" rel="noopener">The Rick and Morty API</a></p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
